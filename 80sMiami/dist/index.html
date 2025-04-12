@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>80s Miami</title>
+  <style>
+    .hidden-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    body {
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #root {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <script type="module" crossorigin src="./assets/index-AfDE--XA.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CuR-Lxq3.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <iframe class="hidden-video" id="video-player"
+    src="https://www.youtube-nocookie.com/embed/ZzA7Rw8S224?si=yxXjtE-jJMMq-6Xj&controls=0&autoplay=0&mute=0"
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+  </iframe>
+  <script>
+    const listener = () => {
+      const video = document.getElementById('video-player');
+      if (video) {
+        const currentSrc = video.src;
+        // Update the src to force autoplay
+        video.src = currentSrc.replace('autoplay=0', 'autoplay=1');
+      }
+      document.removeEventListener('click', listener);
+      document.body.style.cursor = 'default';
+    }
+
+    document.addEventListener('click', listener);
+
+  </script>
+</body>
+
+</html>
